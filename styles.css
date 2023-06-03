@@ -5,6 +5,16 @@
     padding: 1em;
 }
 
+label{
+    display: block;
+    margin-top: 0.8em
+}
+
+button{
+    display: block;
+    margin-top: 1em;
+}
+
 p {
     margin: 0;
 }

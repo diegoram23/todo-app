@@ -5,27 +5,31 @@ const form = document.getElementById('form')
 let myTodos = [
     {
         title: 'Do Laundry',
-        isDone: false
+        isDone: false,
+        priority: 'none'
     },
     {
         title: 'Buy groceries',
-        isDone: false
+        isDone: false,
+        priority: 'Urgent'
     },
     {
         title: 'Do Dishes',
-        isDone: false
+        isDone: false,
+        priority: 'Urgent'
     },
 ]
 
 class Todo {
-    constructor(title, isDone) {
+    constructor(title, isDone, priority) {
         this.title = title
         this.isDone = isDone
+        this.priority = priority
     }
 }
 
 const addTodo = () => {
-    myTodos.push(new Todo(title.value, isDone = false))
+    myTodos.push(new Todo(title.value, isDone = false, priority.value))
 }
 
 form.addEventListener('submit', (e) => {
@@ -40,7 +44,11 @@ const getTodosHtml = () => {
         todosHtml += `
             <div class='item'>
                 <p>${todo.title}</p>
-                <p>${todo.isDone}</p>
+                <p>Priority: ${todo.priority}<p>
+
+                <label>Finished?</label>
+                <input type='checkbox' data-finished='${todo.isDone}'>
+
             </div>
         `
     })
