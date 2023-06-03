@@ -1,0 +1,10 @@
+.item {
+    border: 1px solid red;
+    margin: 1em;
+    max-width: 150px;
+    padding: 1em;
+}
+
+p {
+    margin: 0;
+}
