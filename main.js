@@ -20,6 +20,12 @@ let myTodos = [
     },
 ]
 
+document.addEventListener('click', (e) => {
+    if(e.target.dataset.done){
+        toggleFinish(e.target.dataset.done)
+    }
+})
+
 class Todo {
     constructor(title, isDone, priority) {
         this.title = title
@@ -30,6 +36,12 @@ class Todo {
 
 Todo.prototype.toggleDone = function () {
     return this.isDone = !this.isDone
+}
+
+const toggleFinish = (i) => {
+    myTodos[i].toggleDone()
+    console.log(i)
+    console.log(myTodos[i].isDone)
 }
 
 const addTodo = () => {
@@ -45,13 +57,13 @@ form.addEventListener('submit', (e) => {
 
 const getTodosHtml = () => {
     let todosHtml = ''
-    myTodos.forEach(todo => {
+    myTodos.forEach((todo, index) => {
         todosHtml += `
             <div class='item'>
                 <p>${todo.title}</p>
                 <p>Priority: ${todo.priority}<p>
                 <label>Done?</label>
-                <input type='checkbox' data-done='${todo.isDone}'>
+                <input type='checkbox' data-done='${index}'>
             </div>
         `
     })
@@ -64,13 +76,13 @@ const getUrgentsHtml = () => {
     })
 
     let urgentsHtml = ''
-    urgents.forEach(todo => {
+    urgents.forEach((todo, index) => {
         urgentsHtml += `
             <div class='urgents'>
             <p>${todo.title}</p>
             <p>Priority: ${todo.priority}<p>
             <label>Done?</label>
-            <input type='checkbox' data-done='${todo.isDone}'>
+            <input type='checkbox' data-done='${index}'>
             </div>
         `
     })
