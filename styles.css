@@ -18,3 +18,10 @@ button{
 p {
     margin: 0;
 }
+
+.urgents{
+    border: 1px solid blue;
+    margin: 1em;
+    max-width: 150px;
+    padding: 1em;
+}
