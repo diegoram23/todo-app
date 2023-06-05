@@ -20,8 +20,13 @@ let myTodos = [
     },
 ]
 
+let urgents = myTodos.filter(todo => {
+    return todo.priority === "Urgent"
+})
+
+
 document.addEventListener('click', (e) => {
-    if(e.target.dataset.done){
+    if (e.target.dataset.done) {
         toggleFinish(e.target.dataset.done)
     }
 })
@@ -40,18 +45,24 @@ Todo.prototype.toggleDone = function () {
 
 const toggleFinish = (i) => {
     myTodos[i].toggleDone()
-    console.log(i)
-    console.log(myTodos[i].isDone)
 }
 
 const addTodo = () => {
-    myTodos.push(new Todo(title.value, isDone = false, priority.value))
+    if(priority.value === 'urgent') {
+        myTodos.push(new Todo(title.value, isDone = false, priority.value))
+        getTodosHtml()
+        urgents.push(new Todo(title.value, isDone = false, priority.value))
+        getUrgentsHtml()
+    } else {
+        myTodos.push(new Todo(title.value, isDone = false, priority.value))
+        getTodosHtml()
+    }
+  
 }
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     addTodo()
-    getTodosHtml()
 })
 
 
@@ -70,10 +81,8 @@ const getTodosHtml = () => {
     todosContainer.innerHTML = todosHtml
 }
 
+
 const getUrgentsHtml = () => {
-    let urgents = myTodos.filter(todo => {
-        return todo.priority === "Urgent"
-    })
 
     let urgentsHtml = ''
     urgents.forEach((todo, index) => {
@@ -87,7 +96,6 @@ const getUrgentsHtml = () => {
         `
     })
     urgentsContainer.innerHTML = urgentsHtml
-
 }
 
 
